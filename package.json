@@ -1,0 +1,47 @@
+{
+  "name": "grunt-ssnt",
+  "description": "A simple Nunjucks template generator.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/flynnt/grunt-ssnt",
+  "author": {
+    "name": "Ted Flynn",
+    "email": "acephale@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/flynnt/grunt-ssnt.git"
+  },
+  "bugs": {
+    "url": "https://github.com/flynnt/grunt-ssnt/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/flynnt/grunt-ssnt/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 4.0.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "nunjucks": "~> 2.1.0"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "^0.11.3",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-nodeunit": "^0.4.1",
+    "grunt": "~0.4.5"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.5"
+  },
+  "keywords": [
+    "gruntplugin",
+    "nunjucks",
+    "static site generation",
+    "templating"
+  ]
+}
