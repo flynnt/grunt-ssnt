@@ -33,9 +33,6 @@ proto.renderTemplates = function() {
     files.forEach(function(file, index) {
         var cwd = file.orig.cwd || '';
         var src = file.src[0];
-        var dirname = path.dirname(src);
-        var basename = path.basename(src, '.swig');
-        var outFile = basename + '.html';
 
         grunt.log.write('Processing: "%s"' + '\n', src);
 
