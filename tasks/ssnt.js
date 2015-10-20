@@ -9,7 +9,6 @@
 'use strict';
 
 var nunjucks = require('nunjucks');
-var path = require('path');
 
 var NunjucksTemplate = function(grunt, task) {
     this.grunt = grunt;
