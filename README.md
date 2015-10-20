@@ -1,6 +1,6 @@
 # grunt-ssnt
 
-grunt-ssnt is a Grunt-based mechanism for compiling [Nunjucks](https://mozilla.github.io/nunjucks/) templates into static HTML.  The plugin takes a files array and an options object.  It recursively scans through your files and uses Nunjucks to render templates with all the features that Nunjucks itself provides.  Data can be passed to templates both by means of a global `locals` object that is part of Nunjucks's default options.  While properties set in `locals` are global to every template, they can be overridden at the template level.
+grunt-ssnt is a Grunt-based mechanism for compiling [Nunjucks](https://mozilla.github.io/nunjucks/) templates into static HTML.  The plugin takes a files array and an options object.  It recursively scans through your files and uses Nunjucks to render templates with all the features that Nunjucks itself provides.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
