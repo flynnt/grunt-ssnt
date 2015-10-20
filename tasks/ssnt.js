@@ -30,7 +30,6 @@ proto.renderTemplates = function() {
     var options = this.options;
 
     files.forEach(function(file, index) {
-        var cwd = file.orig.cwd || '';
         var src = file.src[0];
 
         grunt.log.write('Processing: "%s"' + '\n', src);
