@@ -23,7 +23,7 @@ var NunjucksTemplate = function(grunt, task) {
 
     if (this.options.templateGlobals) {
         this.templateGlobals = this.options.templateGlobals;
-    };
+    }
 
     this.renderTemplates();
 };
