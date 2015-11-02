@@ -11,6 +11,8 @@
 var nunjucks = require('nunjucks');
 
 var NunjucksTemplate = function(grunt, task) {
+
+    this.templateGlobals = {};
     this.grunt = grunt;
     this.files = task.files;
     this.options = task.options();
@@ -18,6 +20,10 @@ var NunjucksTemplate = function(grunt, task) {
     if (this.options.nunjucksDefaults) {
         nunjucks.configure(this.options.nunjucksDefaults);
     }
+
+    if (this.options.templateGlobals) {
+        this.templateGlobals = this.options.templateGlobals;
+    };
 
     this.renderTemplates();
 };
@@ -28,13 +34,14 @@ proto.renderTemplates = function() {
     var grunt = this.grunt;
     var files = this.files;
     var options = this.options;
+    var templateGlobals = this.templateGlobals;
 
     files.forEach(function(file, index) {
         var src = file.src[0];
 
         grunt.log.write('Processing: "%s"' + '\n', src);
 
-        grunt.file.write(file.dest, nunjucks.render(src, {}));
+        grunt.file.write(file.dest, nunjucks.render(src, templateGlobals));
 
     });
 
