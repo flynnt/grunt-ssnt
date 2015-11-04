@@ -40,8 +40,6 @@ grunt.initConfig({
 ### Options
 The only specific configuration options the plugin may take are represented as an optional object representing Nunjucks configuration.  You can merge custom Nunjucks configuration with the Nunjucks defaults by setting a `nunjucksDefaults` property on the main options.  This approach is illustrated in the Custom Options section below.  The Nunjucks defaults are documented on [the repository page for Nunjucks itself](https://mozilla.github.io/nunjucks/api.html#configure).  
 
-The most notable of the Nunjucks defaults that may be set when using this plugin is the `locals` object, which allows you to pass global data to all templates.
-
 ### Usage Examples
 
 #### Default Options
@@ -71,9 +69,8 @@ In this example, two custom options are passed in that are meant to override Nun
 grunt.initConfig({
   ssnt: {
     options: {
-        NunjucksDefaults: {
-            autoescape: true,
-            locals: { foo: 'bar' }
+        nunjucksDefaults: {
+            autoescape: true
         }
     },
     files: {[
