@@ -1,7 +1,7 @@
 {
   "name": "grunt-ssnt",
   "description": "A simple Nunjucks template generator.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "https://github.com/flynnt/grunt-ssnt",
   "author": {
     "name": "Ted Flynn",
