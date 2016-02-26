@@ -5,51 +5,28 @@
  * Copyright (c) 2015 Ted Flynn
  * Licensed under the MIT license.
  */
-
 'use strict';
 
-var nunjucks = require('nunjucks');
+const nunjucks = require('nunjucks');
 
-var NunjucksTemplate = function(grunt, task) {
 
-    this.templateGlobals = {};
-    this.grunt = grunt;
-    this.files = task.files;
-    this.options = task.options();
+module.exports = function (grunt) {
 
-    if (this.options.nunjucksDefaults) {
-        nunjucks.configure(this.options.nunjucksDefaults);
-    }
+    grunt.registerMultiTask('ssnt', 'Compiles Nunjucks templates with Grunt.', function () {
 
-    if (this.options.templateGlobals) {
-        this.templateGlobals = this.options.templateGlobals;
-    }
+        const options = Object.assign({
+            templateGlobals: {},
+            basePath: '.',
+            nunjucksDefaults: {}
+        }, this.options());
+        const env = nunjucks.configure(options.basePath, options.nunjucksDefaults);
 
-    this.renderTemplates();
-};
-
-var proto = NunjucksTemplate.prototype;
-
-proto.renderTemplates = function() {
-    var grunt = this.grunt;
-    var files = this.files;
-    var options = this.options;
-    var templateGlobals = this.templateGlobals;
-
-    files.forEach(function(file, index) {
-        var src = file.src[0];
-
-        grunt.log.write('Processing: "%s"' + '\n', src);
-
-        grunt.file.write(file.dest, nunjucks.render(src, templateGlobals));
+        this.files.forEach(file => {
+            const src = file.src[0];
+            grunt.log.write('Processing: "%s"' + '\n', src);
+            grunt.file.write(file.dest, env.render(src, options.templateGlobals));
+        });
 
     });
 
-    return this;
-};
-
-module.exports = function(grunt) {
-    grunt.registerMultiTask('ssnt', 'Compiles Nunjucks templates with Grunt.', function() {
-        new NunjucksTemplate(grunt, this);
-  });
 };
