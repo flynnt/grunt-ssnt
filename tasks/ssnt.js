@@ -8,6 +8,7 @@
 'use strict';
 
 const nunjucks = require('nunjucks');
+const path = require('path');
 
 
 module.exports = function (grunt) {
@@ -22,7 +23,7 @@ module.exports = function (grunt) {
         const env = nunjucks.configure(options.basePath, options.nunjucksDefaults);
 
         this.files.forEach(file => {
-            const src = file.src[0];
+            const src = path.resolve(file.src[0]);
             grunt.log.write('Processing: "%s"' + '\n', src);
             grunt.file.write(file.dest, env.render(src, options.templateGlobals));
         });
