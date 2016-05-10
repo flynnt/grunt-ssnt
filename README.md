@@ -38,12 +38,15 @@ grunt.initConfig({
 ```
 
 ### Options
-The only specific configuration options the plugin may take are represented as an optional object representing Nunjucks configuration.  You can merge custom Nunjucks configuration with the Nunjucks defaults by setting a `nunjucksDefaults` property on the main options.  This approach is illustrated in the Custom Options section below.  The Nunjucks defaults are documented on [the repository page for Nunjucks itself](https://mozilla.github.io/nunjucks/api.html#configure).  
+The plugin takes a fairly specific set of options:
+* `basePath`, which is used to provide Nunjucks with a path to your templates.  Defaults to `.`.
+* `templateGlobals`, which represents data (often configuration) to be made available to all templates.
+* `nunjucksDefaults`, an object that represents Nunjucks configuration. You can merge custom Nunjucks configuration with the Nunjucks defaults by setting a `nunjucksDefaults` property on the main options.  This approach is illustrated in the Custom Options section below.  The Nunjucks defaults are documented on [the repository page for Nunjucks itself](https://mozilla.github.io/nunjucks/api.html#configure).
 
 ### Usage Examples
 
 #### Default Options
-In this example, the plugin uses Grunt's native file expansion to recursively search for `.Nunjucks` files in a specific current working directory.  Those files are then rendered with Nunjucks into a specified destination and with a specified file extension of `.html`.
+In this example, the plugin uses Grunt's native file expansion to recursively search for `.nunjucks` files in a specific current working directory.  Those files are then rendered with Nunjucks into a specified destination and with a specified file extension of `.html`.
 
 ```js
 grunt.initConfig({
@@ -54,7 +57,7 @@ grunt.initConfig({
         cwd: 'foo',
         dest: 'your/compiled/assets',
         src: [
-            '**/*.html'
+            '**/*.nunjucks'
         ],
         ext: '.html'
     ]},
@@ -63,12 +66,14 @@ grunt.initConfig({
 ```
 
 #### Custom Options
-In this example, two custom options are passed in that are meant to override Nunjucks defaults: autoescape is set to true and a path to an object containing data meant to be passed to all templates globally.
+In this example, three custom options are passed in: A Nunjucks configuration object with an updated setting, a custom basePath, and some data to be made available to all templates.
 
 ```js
 grunt.initConfig({
   ssnt: {
     options: {
+        basePath: '/',
+        templateGlobals: { foo: 'bar' },
         nunjucksDefaults: {
             autoescape: true
         }
@@ -78,7 +83,7 @@ grunt.initConfig({
         cwd: 'foo',
         dest: 'your/compiled/assets',
         src: [
-            '**/*.html'
+            '**/*.nunjucks'
         ],
         ext: '.html'
     ]},
@@ -91,3 +96,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 * 10/19/15: Initial Release: 0.1.0
+* 4/4/16: First major release: 1.0.0
+* 05/10/16: Patch release to correct some documentation issues.
